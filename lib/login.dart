@@ -44,62 +44,46 @@ class _LoginPageState extends State<LoginPage> {
       ),
       body: Center(
         child: SingleChildScrollView(
-          child: Stack(
-            children: [
-              Positioned(
-                top: 0,
-                left: 0,
-                child: Container(
-                  width: 500,
-                  height: 500,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: Colors.blue,
-                  ),
+          child: Container(
+            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 40),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SizedBox(
+                  height: 150,
                 ),
-              ),
-              Container(
-                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 40),
-                child: Column(
+                _myTextField("Username", false),
+                _myTextField("Password", _isPasswordHidden),
+                SizedBox(height: 20),
+                Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    SizedBox(
-                      height: 150,
+                    ElevatedButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const HomePage(),
+                          ),
+                        );
+                      },
+                      child: Text('Login'),
                     ),
-                    _myTextField("Username", false),
-                    _myTextField("Password", _isPasswordHidden),
-                    SizedBox(height: 20),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        ElevatedButton(
-                          onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => const HomePage(),
-                              ),
-                            );
-                          },
-                          child: Text('Login'),
-                        ),
-                        SizedBox(width: 10),
-                        ElevatedButton(
-                          onPressed: () {},
-                          style: ElevatedButton.styleFrom(
-                            primary: Colors.white,
-                          ),
-                          child: Text(
-                            'Register',
-                            style: TextStyle(color: Colors.black),
-                          ),
-                        ),
-                      ],
-                    )
+                    SizedBox(width: 10),
+                    ElevatedButton(
+                      onPressed: () {},
+                      style: ElevatedButton.styleFrom(
+                        primary: Colors.white,
+                      ),
+                      child: Text(
+                        'Register',
+                        style: TextStyle(color: Colors.black),
+                      ),
+                    ),
                   ],
-                ),
-              ),
-            ],
+                )
+              ],
+            ),
           ),
         ),
       ),
